@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 import pandas as pd
-import openpyxl as px
+
 
 gmail_address = 'marcin.automatyzacje@gmail.com'
 password = 'yt5'
@@ -58,10 +58,6 @@ for page in range(1, counter):
                 comment.append(seq_title.find(class_='leadr').text.strip())
                 date.append(seq_title.find("time").text[0:10])
 
-
-
-
-
             godzina = time.localtime()
             aktualna = time.strftime("%H:%M:%S", time.localtime())
 
@@ -74,6 +70,4 @@ for page in range(1, counter):
         time.sleep(5)
 
 data = ({"date": date,"title": title,"comment": comment})
-result = pd.DataFrame(data=data).to_csv("info_giełdowe.csv", sep=";")
-
-print(data)
+result = pd.DataFrame(data=data).to_excel("info_giełdowe.xlsx", index=False)
