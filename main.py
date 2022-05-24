@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import pandas as pd
 
+spolka = input("WPISZ NAZWE SPOLKI (np. cdprojekt): ")
 
 title = []
 date = []
@@ -12,7 +13,7 @@ tablica = []
 
 for page in range(1, counter):
 
-    site = f'https://www.stockwatch.pl/wiadomosci/walor/cdprojekt/page/{page}'
+    site = f'https://www.stockwatch.pl/wiadomosci/walor/{spolka}/page/{page}'
 
     try:
         page = requests.get(site)
