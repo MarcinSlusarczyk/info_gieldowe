@@ -1,42 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import time
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
 import pandas as pd
 
-
-gmail_address = 'marcin.automatyzacje@gmail.com'
-password = 'yt5'
 
 title = []
 date = []
 comment = []
-
-def send_email_alert_new():
-    subject = f'TOREBKA JEST TAŃSZA!!!!!!!!!!!!!!!!'
-
-    msg = MIMEMultipart()
-    msg['From'] = gmail_address
-    msg['To'] = gmail_address
-    msg['Subject'] = subject
-
-    body = f'https://www.eobuwie.com.pl/torebka-guess-cessily-ev-hwev76-79110-bla.html?utm_source=rtbhouse&utm_medium=retargeting&utm_campaign=rtbhouse-retargeting'
-    msg.attach(MIMEText(body, 'plain'))
-
-    part = MIMEBase('application', 'octet-stream')
-
-    text = msg.as_string()
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(gmail_address, password)
-    server.sendmail(gmail_address, gmail_address, text)
-    server.quit()
-
-
 counter = 30
 tablica = []
 
